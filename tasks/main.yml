@@ -1,0 +1,9 @@
+---
+- name: Ensure NFS utilities are installed.
+  yum: name=nfs-utils state=installed
+
+- name: Ensure rpcbind and nfs are running.
+  service: name={{ item }} state=started enabled=yes
+  with_items:
+    - rpcbind
+    - nfs

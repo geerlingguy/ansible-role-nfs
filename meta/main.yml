@@ -3,7 +3,7 @@ dependencies: []
 
 galaxy_info:
   author: geerlingguy
-  description: NFS installation for RHEL/CentOS 6.x.
+  description: NFS installation for RHEL/CentOS.
   company: "Midwestern Mac, LLC"
   license: "license (BSD, MIT)"
   min_ansible_version: 1.4

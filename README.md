@@ -1,6 +1,6 @@
 # Ansible Role: NFS
 
-Installs NFS utilities on RHEL/CentOS 6.x.
+Installs NFS utilities on RHEL/CentOS.
 
 ## Requirements
 

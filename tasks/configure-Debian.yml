@@ -1,0 +1,4 @@
+---
+- name: Ensure NFS is running.
+  service: name=nfs-kernel-server state=started enabled=yes
+  when: nfs_exports

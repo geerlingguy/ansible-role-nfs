@@ -5,3 +5,18 @@
 
 - include: setup-Debian.yml
   when: ansible_os_family == 'Debian'
+
+- name: Copy exports file.
+  template:
+    src: exports.j2
+    dest: /etc/exports
+    owner: root
+    group: root
+    mode: 0644
+
+# Configuration tasks.
+- include: configure-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include: configure-Debian.yml
+  when: ansible_os_family == 'Debian'

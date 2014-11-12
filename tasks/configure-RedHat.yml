@@ -1,0 +1,7 @@
+---
+- name: Ensure rpcbind and nfs are running.
+  service: "name={{ item }} state=started enabled=yes"
+  with_items:
+    - rpcbind
+    - nfs
+  when: nfs_exports

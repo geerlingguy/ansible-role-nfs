@@ -1,9 +1,7 @@
 ---
-- name: Ensure NFS utilities are installed.
-  yum: name=nfs-utils state=installed
+# Setup/install tasks.
+- include: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
 
-- name: Ensure rpcbind and nfs are running.
-  service: name={{ item }} state=started enabled=yes
-  with_items:
-    - rpcbind
-    - nfs
+- include: setup-Debian.yml
+  when: ansible_os_family == 'Debian'

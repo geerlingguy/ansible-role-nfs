@@ -20,3 +20,6 @@
 
 - include: configure-Debian.yml
   when: ansible_os_family == 'Debian' and nfs_exports
+
+- name: Re-export NFS shares.
+  command: exportfs -r -a

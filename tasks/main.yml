@@ -1,5 +1,5 @@
 ---
-# Setup/install tasks.
+# Setup/install tasks common for servers and clients.
 - include: setup-RedHat.yml
   when: ansible_os_family == 'RedHat'
 
@@ -14,9 +14,12 @@
     group: root
     mode: 0644
 
-# Configuration tasks.
+# Server configuration tasks.
 - include: configure-RedHat.yml
-  when: ansible_os_family == 'RedHat'
+  when: ansible_os_family == 'RedHat' and nfs_exports
 
 - include: configure-Debian.yml
-  when: ansible_os_family == 'Debian'
+  when: ansible_os_family == 'Debian' and nfs_exports
+
+- name: Re-export NFS shares.
+  command: exportfs -r -a

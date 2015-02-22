@@ -4,7 +4,3 @@
   with_items:
     - nfs-common
     - nfs-kernel-server
-
-# This isn't necessary until exports are configured in /etc/exports.
-# - name: Ensure NFS is running.
-#   service: name=nfs-kernel-server state=started enabled=yes

@@ -17,11 +17,12 @@
     owner: root
     group: root
     mode: 0644
-  notify: restart nfs server
+  notify: restart nfs
 
 # Configuration tasks.
-- include: configure-RedHat.yml
-  when: ansible_os_family == 'RedHat'
-
-- include: configure-Debian.yml
-  when: ansible_os_family == 'Debian'
+- name: Ensure rpcbind and nfs are running.
+  service: "name={{ item }} state=started enabled=yes"
+  with_items:
+    - rpcbind
+    - "{{ nfs_server_daemon }}"
+  when: nfs_exports|length

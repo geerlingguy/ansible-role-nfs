@@ -20,9 +20,9 @@
   notify: restart nfs
 
 # Configuration tasks.
-- name: Ensure rpcbind and nfs are running.
-  service: "name={{ item }} state=started enabled=yes"
-  with_items:
-    - rpcbind
-    - "{{ nfs_server_daemon }}"
+- name: Ensure rpcbind is running.
+  service: name=rpcbind state=started enabled=yes
+
+- name: Ensure nfs is running.
+  service: "name={{ nfs_server_daemon }} state=started enabled=yes"
   when: nfs_exports|length

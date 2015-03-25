@@ -19,10 +19,6 @@
     mode: 0644
   notify: restart nfs
 
-# Configuration tasks.
-- name: Ensure rpcbind is running.
-  service: name=rpcbind state=started enabled=yes
-
 - name: Ensure nfs is running.
   service: "name={{ nfs_server_daemon }} state=started enabled=yes"
   when: nfs_exports|length

@@ -1,0 +1,30 @@
+---
+driver:
+  name: docker
+  privileged: true
+  provision_command: mkdir -p /lib/modules/$(uname -r) && depmod -a 2>/dev/null
+
+provisioner:
+  name: ansible_playbook
+  ansible_yum_repo: "http://mirror.logol.ru/epel/6/x86_64/epel-release-6-8.noarch.rpm"
+  hosts: localhost
+  require_ruby_for_busser: false
+
+platforms:
+  - name: centos-6.6
+    provisioner:
+      playbook: tests/test.yml
+      ansible_diff: true
+
+suites:
+  - name: nfs-client-only
+    attributes:
+      extra_vars:
+        nfs_disable_server: true
+
+  - name: nfs-server-empty-exports
+
+  - name: nfs-server-nonempty-exports
+    attributes:
+      extra_vars:
+        nfs_exports: { "/home/public *(rw,sync,no_root_squash)" }

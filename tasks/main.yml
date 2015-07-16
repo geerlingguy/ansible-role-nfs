@@ -18,6 +18,7 @@
     group: root
     mode: 0644
   notify: restart nfs
+  when: nfs_disable_server == false
 
 - name: Ensure nfs is running.
   service: "name={{ nfs_server_daemon }} state=started enabled=yes"

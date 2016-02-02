@@ -2,10 +2,9 @@
 # Include variables and define needed variables.
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
-  when: ansible_os_family == 'Debian' or (ansible_os_family == 'RedHat' and ansible_distribution_major_version != '7')
 
-- name: Inlcude Redhat 7 variables
-  include_vars: Redhat-7.yml
+- name: Include overrides specific to RHEL 7.
+  include_vars: RedHat-7.yml
   when: ansible_os_family == 'RedHat' and ansible_distribution_major_version == "7"
 
 # Setup/install tasks.

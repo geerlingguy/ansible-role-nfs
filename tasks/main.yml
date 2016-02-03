@@ -14,6 +14,10 @@
 - include: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
+- name: Ensure directories to export exist
+  file: path="{{ item.strip().split()[0] }}" state=directory
+  with_items: nfs_exports
+
 - name: Copy exports file.
   template:
     src: exports.j2

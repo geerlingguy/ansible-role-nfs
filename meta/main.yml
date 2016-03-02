@@ -6,16 +6,16 @@ galaxy_info:
   description: NFS installation for Linux.
   company: "Midwestern Mac, LLC"
   license: "license (BSD, MIT)"
-  min_ansible_version: 1.4
+  min_ansible_version: 1.8
   platforms:
-  - name: EL
-    versions:
-    - all
-  - name: Debian
-    versions:
-    - all
-  - name: Ubuntu
-    versions:
-    - all
-  categories:
+    - name: EL
+      versions:
+      - all
+    - name: Debian
+      versions:
+      - all
+    - name: Ubuntu
+      versions:
+      - all
+  galaxy_tags:
     - system

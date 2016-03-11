@@ -11,6 +11,8 @@ galaxy_info:
     - name: EL
       versions:
       - all
+    - name: Fedora
+      - all
     - name: Debian
       versions:
       - all

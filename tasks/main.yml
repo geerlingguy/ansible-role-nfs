@@ -20,7 +20,7 @@
 
 - name: Ensure directories to export exist
   file: 'path="{{ item.strip().split()[0] }}" state=directory'
-  with_items: nfs_exports
+  with_items: "{{ nfs_exports }}"
   notify: restart nfs
 
 - name: Copy exports file.

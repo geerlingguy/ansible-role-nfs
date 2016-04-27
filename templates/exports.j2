@@ -9,5 +9,15 @@
 # /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
 #
 {% for export in nfs_exports %}
-{{ export }}
+# {{ export.name }}
+{{ export.path }}	{% if export.subnet is defined %}{{ export.subnet }}{% else %}*{% endif %}
+({% if export.writable is defined and export.writable %}rw{% else %}ro{% endif %}
+{% if export.insecure is defined and export.insecure %},insecure{% else %},secure{% endif %}
+{% if export.async is defined and export.async %},async{% else %},sync{% endif %}
+{% if export.no_subtree_check is defined and export.no_subtree_check %},no_subtree_check{% else %},subtree_check{% endif %}
+{% if export.no_root_squash is defined and export.no_root_squash %},no_root_squash{% else %},root_squash{% endif %}
+{% if export.all_squash is defined and export.all_squash %},all_squash{% endif %}
+{% if export.anonuid is defined %},anonuid={{ export.anonuid }}{% endif %}
+{% if export.anongid is defined %},anongid={{ export.anongid }}{% endif %}
+)
 {% endfor %}

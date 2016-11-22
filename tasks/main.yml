@@ -33,10 +33,14 @@
   register: nfs_exports_copy
   notify: restart nfs
 
+- name: Ensure nfs is stopped and disabled if desired
+  service: "name={{ nfs_server_daemon }} state=stopped enabled=no"
+  when: nfs_service_enabled == false
+
 - name: Restart NFS immediately if exports are updated.
   service: "name={{ nfs_server_daemon }} state=restarted"
-  when: nfs_exports_copy.changed
+  when: nfs_exports_copy.changed and nfs_service_enabled == true
 
 - name: Ensure nfs is running.
   service: "name={{ nfs_server_daemon }} state=started enabled=yes"
-  when: nfs_exports|length
+  when: nfs_exports|length and nfs_service_enabled == true

@@ -31,14 +31,14 @@
     group: root
     mode: 0644
   register: nfs_exports_copy
-  notify: restart nfs
+  notify: reload nfs
 
 - name: Ensure nfs is stopped and disabled if desired
   service: "name={{ nfs_server_daemon }} state=stopped enabled=no"
   when: nfs_service_enabled == false
 
-- name: Restart NFS immediately if exports are updated.
-  service: "name={{ nfs_server_daemon }} state=restarted"
+- name: Reload NFS immediately if exports are updated.
+  service: "name={{ nfs_server_daemon }} state=reloaded"
   when: nfs_exports_copy.changed and nfs_service_enabled == true
 
 - name: Ensure nfs is running.

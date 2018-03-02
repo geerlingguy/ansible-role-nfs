@@ -21,6 +21,7 @@ nfs_exports:
   - name: "Public"
     path: "/home/public"
     options: "*(rw,sync,no_root_squash)"
+    state: "directory"
 ```
 
 ## Dependencies

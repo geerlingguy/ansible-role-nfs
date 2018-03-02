@@ -3,4 +3,5 @@ nfs_exports: []
 #  - name: "Example directory"
 #    path: "/srv/example"
 #    options: "*(rw,sync,no_root_squash)"
-#    state: "directory" directory/absent
+#    state: "directory" #directory/absent
+#    mode: "777" #nfs directory rights

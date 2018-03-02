@@ -21,7 +21,8 @@ nfs_exports:
   - name: "Public"
     path: "/home/public"
     options: "*(rw,sync,no_root_squash)"
-    state: "directory"
+    state: "directory"	#directory/absent
+    mode: "777"		#NFS directory's rights
 ```
 
 ## Dependencies

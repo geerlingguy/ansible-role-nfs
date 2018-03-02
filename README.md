@@ -22,7 +22,7 @@ nfs_exports:
     path: "/home/public"
     options: "*(rw,sync,no_root_squash)"
     state: "directory"	#directory/absent
-    mode: "777"		#NFS directory's rights
+    acls: mode=777 owner=user group=group #NFS directory's rights - could be void
 ```
 
 ## Dependencies

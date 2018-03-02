@@ -4,4 +4,4 @@ nfs_exports: []
 #    path: "/srv/example"
 #    options: "*(rw,sync,no_root_squash)"
 #    state: "directory" #directory/absent
-#    mode: "777" #nfs directory rights
+#    acls: mode=777 owner=user group=group #nfs directory's rights could be void

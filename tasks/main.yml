@@ -19,7 +19,7 @@
   when: ansible_os_family == 'Debian'
 
 - name: Ensure directories to export exist
-  file: 'path={{ item.path }} state={{ item.state }} mode={{ item.mode }}'
+  file: 'path={{ item.path }} state={{ item.state }} {{ item.acls }}'
   with_items: "{{ nfs_exports }}"
   notify: restart nfs
 

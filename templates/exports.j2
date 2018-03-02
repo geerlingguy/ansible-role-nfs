@@ -9,5 +9,6 @@
 # /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
 #
 {% for export in nfs_exports %}
-{{ export }}
+#{{ export.name }}
+{% if export.state is defined and export.state == "absent" %}#{% endif %}{{ export.path }} {{ export.options }}
 {% endfor %}

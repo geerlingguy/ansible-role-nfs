@@ -18,10 +18,29 @@
 - include: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
+- name: /etc/exports exists already
+  stat:
+    path: /etc/exports
+  register: stat_etc_exports
+
+- name: set notification action to restart NFS ?
+  set_fact:
+    notify_action: restart nfs
+  when: stat_etc_exports.stat.exists == false
+
+- name: set notification action to reload NFS ?
+  set_fact:
+    notify_action: reload nfs
+  when: stat_etc_exports.stat.exists
+
+- name: reload or restart
+  debug:
+    msg: "{{ notify_action }}"
+
 - name: Ensure directories to export exist
   file: 'path="{{ item.strip().split()[0] }}" state=directory'
   with_items: "{{ nfs_exports }}"
-  notify: restart nfs
+  notify: "{{ notify_action|default('restart nfs') }}"
 
 - name: Copy exports file.
   template:
@@ -31,11 +50,7 @@
     group: root
     mode: 0644
   register: nfs_exports_copy
-  notify: restart nfs
-
-- name: Restart NFS immediately if exports are updated.
-  service: "name={{ nfs_server_daemon }} state=restarted"
-  when: nfs_exports_copy.changed
+  notify: "{{ notify_action|default('restart nfs') }}"
 
 - name: Ensure nfs is running.
   service: "name={{ nfs_server_daemon }} state=started enabled=yes"

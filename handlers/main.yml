@@ -1,4 +1,4 @@
 ---
-- name: restart nfs
-  service: "name={{ nfs_server_daemon }} state=restarted"
-  when: nfs_exports|length
+- name: reload nfs
+  service: "name={{ nfs_server_daemon }} state=reloaded"
+  when: nfs_exports|length and nfs_service_enabled == true

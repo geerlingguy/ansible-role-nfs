@@ -1,5 +1,7 @@
 ---
-- hosts: all
+- name: Converge
+  hosts: all
+  become: true
 
   pre_tasks:
     - name: Update apt cache.
@@ -8,4 +10,4 @@
       changed_when: false
 
   roles:
-    - role_under_test
+    - role: geerlingguy.nfs

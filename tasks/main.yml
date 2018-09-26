@@ -5,11 +5,15 @@
 
 - name: Include overrides specific to RHEL 7.
   include_vars: RedHat-7.yml
-  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version == "7"
+  when:
+    - ansible_os_family == 'RedHat'
+    - ansible_distribution_major_version == "7"
 
 - name: Include overrides specific to Fedora.
   include_vars: Fedora.yml
-  when: ansible_os_family == 'RedHat' and ansible_distribution == "Fedora"
+  when:
+    - ansible_os_family == 'RedHat'
+    - ansible_distribution == "Fedora"
 
 # Setup/install tasks.
 - include_tasks: setup-RedHat.yml

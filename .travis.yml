@@ -13,6 +13,11 @@ install:
   # Install test dependencies.
   - pip install molecule docker
 
+before_script:
+  - cd ../
+  - mv ansible-role-nfs geerlingguy.nfs
+  - cd geerlingguy.nfs
+
 script:
   # Run tests.
   - molecule test

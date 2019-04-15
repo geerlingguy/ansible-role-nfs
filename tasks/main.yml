@@ -15,12 +15,19 @@
     - ansible_os_family == 'RedHat'
     - ansible_distribution == "Fedora"
 
+- name: Include overrides specific to Suse.
+  include_vars: Suse.yml
+  when: ansible_os_family == 'Suse' and ansible_distribution == "Suse"
+
 # Setup/install tasks.
 - include_tasks: setup-RedHat.yml
   when: ansible_os_family == 'RedHat'
 
 - include_tasks: setup-Debian.yml
   when: ansible_os_family == 'Debian'
+
+- include: setup-Suse.yml
+  when: ansible_os_family == 'Suse'
 
 - name: Ensure directories to export exist
   file: 'path="{{ item.strip().split()[0] }}" state=directory'

@@ -1,0 +1,9 @@
+---
+- name: Ensure NFS utilities are installed.
+  zypper:
+    name: nfs-kernel-server
+    state: present
+
+- name: Ensure rpcbind is running.
+  service: name=rpcbind state=started enabled=yes
+

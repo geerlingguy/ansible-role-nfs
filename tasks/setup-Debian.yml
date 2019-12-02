@@ -1,6 +1,5 @@
 ---
 - name: Ensure NFS utilities are installed.
-  apt: "name={{ item }} state=installed"
-  with_items:
-    - nfs-common
-    - nfs-kernel-server
+  apt:
+    name: ['nfs-common', 'nfs-kernel-server']
+    state: installed

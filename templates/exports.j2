@@ -1,5 +1,4 @@
-#jinja2: lstrip_blocks: True 
-#jinja2: trim_blocks: True
+#jinja2: lstrip_blocks: True
 # /etc/exports: the access control list for filesystems which may be exported
 #   to NFS clients.  See exports(5).
 #
@@ -23,7 +22,6 @@
 #
 {% for export in nfs_exports %}
     {%- if export.state is defined and export.state != "absent" %}
-{# {{ export.path }} {% for host in export.options %}{{host}}({{export.options[host]|join(',')}}) {% endfor %} #}
 {{ export.path }} 
         {%- for host in export.options %} {{host}}({{export.options[host]|join(',')}}) {%- endfor %}        
     {% endif %}

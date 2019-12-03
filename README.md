@@ -31,11 +31,16 @@ nfs_exports:
         - rw
         - root_squash
         - all_squash
-    state: "directory"	#directory/absent
+    state: "directory"
     acls: 
       mode: 0755
       owner: nobody
       group: nobody 
+  - name: "removed"
+    path: "/var/nfs/removed"
+    options:
+    state: "absent"
+    acls:
 ```
 
 ## Dependencies

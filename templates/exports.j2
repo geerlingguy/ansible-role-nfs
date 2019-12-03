@@ -21,6 +21,8 @@
 #
 {% for export in nfs_exports %}
 {% if export.state is defined and export.state != "absent" %}
-{{ export.path }} {{ export.options }}
+{% for host in export.options %}
+{{ export.path }} {{host}}({{export.options[host]|join(',')}})
+{% endfor %}
 {% endif %}
 {% endfor %}

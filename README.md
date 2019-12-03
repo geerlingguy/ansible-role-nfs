@@ -20,7 +20,17 @@ Simple example:
 nfs_exports: 
   - name: "Public"
     path: "/home/public"
-    options: "*(rw,sync,no_root_squash)"
+    options: 
+      "*":
+        - rw
+        - sync
+        - no_root_squash
+      "10.0.0.1":
+        - ro
+      "10.0.0.2":
+        - rw
+        - root_squash
+        - all_squash
     state: "directory"	#directory/absent
     acls: 
       mode: 0755

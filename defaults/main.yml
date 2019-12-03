@@ -1,7 +1,28 @@
 ---
 nfs_exports: []
-#  - name: "Example directory"
-#    path: "/srv/example"
-#    options: "*(rw,sync,no_root_squash)"
-#    state: "directory" #directory/absent
-#    acls: mode=777 owner=user group=group #nfs directory's rights could be void
+#  - "/srv/simple *(rw,sync,no_root_squash)"
+nfs_exports_detailed: []
+#  - name: "Example detailed"
+#    path: "/srv/detailed"
+#    options: 
+#        "*":
+#        - rw
+#        - sync
+#        - no_root_squash
+#        "10.0.0.1":
+#        - ro
+#        "10.0.0.2":
+#        - rw
+#        - root_squash
+#        - all_squash
+#        state: "directory"
+#        acls: 
+#        mode: 0755
+#        owner: nobody
+#        group: nobody 
+#  - name: "Example removed"
+#    path: "/srv/removed"
+#    options:
+#    state: "absent"
+#    acls:
+    

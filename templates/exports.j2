@@ -20,9 +20,12 @@
 #
 ##########################################################################################
 #
+# Simple exports
 {% for export in nfs_exports %}
 {{ export }}
 {% endfor %}
+#
+# Detailed exports
 {% for export in nfs_exports_detailed %}
     {%- if export.state is defined and export.state != "absent" %}
 {{ export.path }} 

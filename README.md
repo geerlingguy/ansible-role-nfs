@@ -4,6 +4,8 @@
 
 Installs NFS utilities on RedHat/CentOS or Debian/Ubuntu.
 
+A list of exports which will be placed in the `/etc/exports` file. See Ubuntu's simple [Network File System (NFS)](https://help.ubuntu.com/14.04/serverguide/network-file-system.html) guide for more info and examples.
+
 ## Requirements
 
 None.
@@ -13,13 +15,27 @@ None.
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
     nfs_exports: []
+    nfs_exports_detailed: []
 
-A list of exports which will be placed in the `/etc/exports` file. See Ubuntu's simple [Network File System (NFS)](https://help.ubuntu.com/14.04/serverguide/network-file-system.html) guide for more info and examples.
+### Simple behaviour
+
 Simple example: 
 ```
 nfs_exports: 
   - name: "Public"
     path: "/home/public"
+    options: "*(rw,sync,no_root_squash)"
+```
+
+### Detailed behaviour
+
+With this alternative syntax a more detailed control can be achived. Both behaviours (simple and detailed) can be used at the same time.
+
+Detailed example:
+```
+nfs_exports_detailed: 
+  - name: "Private"
+    path: "/home/private"
     options: 
       "*":
         - rw

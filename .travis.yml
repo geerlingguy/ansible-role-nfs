@@ -6,10 +6,11 @@ env:
   global:
     - ROLE_NAME: nfs
   matrix:
+    - MOLECULE_DISTRO: centos8
     - MOLECULE_DISTRO: centos7
     - MOLECULE_DISTRO: centos6
+    - MOLECULE_DISTRO: ubuntu2004
     - MOLECULE_DISTRO: ubuntu1804
-    - MOLECULE_DISTRO: ubuntu1604
 
 install:
   # Install test dependencies.

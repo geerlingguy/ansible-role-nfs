@@ -3,12 +3,6 @@
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
 
-- name: Include overrides specific to RHEL 6 and below
-  include_vars: RedHat-6.yml
-  when:
-    - ansible_os_family == 'RedHat'
-    - ansible_distribution_major_version < "7"
-
 - name: Include overrides specific to Fedora.
   include_vars: Fedora.yml
   when:

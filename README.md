@@ -10,16 +10,34 @@ None.
 
 ## Role Variables
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
+Available variables are listed below, along with default values (see `defaults/main.yml`).
 
-    nfs_exports: []
+### Exports
 
-A list of exports which will be placed in the `/etc/exports` file. See Ubuntu's simple [Network File System (NFS)](https://ubuntu.com/server/docs/service-nfs) guide for more info and examples. (Simple example: `nfs_exports: [ "/home/public    *(rw,sync,no_root_squash)" ]`).
+```yaml
+nfs_exports: []
+```
 
-    nfs_rpcbind_state: started
-    nfs_rpcbind_enabled: true
+A list of the NFS exports which will be placed in the `/etc/exports` file. 
 
-(RedHat/CentOS/Fedora only) The state of the `rpcbind` service, and whether it should be enabled at system boot.
+See Ubuntu's simple [Network File System (NFS)](https://ubuntu.com/server/docs/service-nfs) guide for more information and examples. 
+
+Example:
+
+```yaml
+nfs_exports:
+  - "/home/public *(rw,sync,no_root_squash)"
+  - "/dump/backups *.example.com(sync)"
+```
+
+### RPC Binding (RedHat/CentOS/Fedora only) 
+
+```yaml
+nfs_rpcbind_state: started
+nfs_rpcbind_enabled: true
+```
+
+The state of the `rpcbind` service, and whether it should be enabled at system boot.
 
 ## Dependencies
 
@@ -27,9 +45,11 @@ None.
 
 ## Example Playbook
 
-    - hosts: db-servers
-      roles:
-        - { role: geerlingguy.nfs }
+```yaml
+- hosts: db-servers
+  roles:
+    - { role: geerlingguy.nfs }
+```
 
 ## License
 

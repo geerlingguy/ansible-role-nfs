@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/geerlingguy/ansible-role-nfs/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/ansible-role-nfs/actions?query=workflow%3ACI)
 
-Installs NFS utilities on RedHat/CentOS or Debian/Ubuntu.
+Installs NFS utilities on RedHat/CentOS,r Debian/Ubuntu, SUSE/OpenSuse.
 
 ## Requirements
 

@@ -1,6 +1,8 @@
 ---
 - name: Ensure NFS utilities are installed.
-  package: name=nfs-utils state=present
+  package:
+    name: nfs-utils
+    state: present
 
 - name: Ensure rpcbind is running as configured.
   service:

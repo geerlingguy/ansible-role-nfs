@@ -43,6 +43,7 @@ jobs:
         distro:
           - rockylinux8
           - ubuntu2004
+          - archlinux
 
     steps:
       - name: Check out the codebase.

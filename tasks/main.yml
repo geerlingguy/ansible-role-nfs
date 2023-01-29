@@ -10,11 +10,7 @@
     - ansible_distribution == "Fedora"
 
 # Setup/install tasks.
-- include_tasks: setup-RedHat.yml
-  when: ansible_os_family == 'RedHat'
-
-- include_tasks: setup-Debian.yml
-  when: ansible_os_family == 'Debian'
+- include_tasks: "setup-{{ ansible_os_family }}.yml"
 
 - name: Ensure directories to export exist
   file:  # noqa 208

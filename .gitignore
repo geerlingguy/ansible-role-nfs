@@ -2,4 +2,4 @@
 */__pycache__
 *.pyc
 .cache
-
+meta/.galaxy_install_info

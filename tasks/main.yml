@@ -18,9 +18,9 @@
 
 - name: Ensure directories to export exist
   file:  # noqa 208
-    path: "{{ item.strip().split()[0] }}"
+    path: "{{ item }}"
     state: directory
-  with_items: "{{ nfs_exports }}"
+  with_items: "{{ nfs_exports | map('split') | map('first') | unique }}"
 
 - name: Copy exports file.
   template:

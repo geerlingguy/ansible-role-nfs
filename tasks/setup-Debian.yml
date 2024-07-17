@@ -5,3 +5,4 @@
       - nfs-common
       - nfs-kernel-server
     state: present
+    update_cache: yes

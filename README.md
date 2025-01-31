@@ -1,6 +1,6 @@
 # Ansible Role: NFS
 
-[![CI](https://github.com/geerlingguy/ansible-role-nfs/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/ansible-role-nfs/actions?query=workflow%3ACI)
+[![CI](https://github.com/geerlingguy/ansible-role-nfs/actions/workflows/ci.yml/badge.svg)](https://github.com/geerlingguy/ansible-role-nfs/actions/workflows/ci.yml)
 
 Installs NFS utilities on RedHat/CentOS or Debian/Ubuntu.
 

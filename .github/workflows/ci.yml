@@ -41,8 +41,8 @@ jobs:
     strategy:
       matrix:
         distro:
-          - rockylinux9
-          - ubuntu2004
+          - rockylinux10
+          - ubuntu2404
 
     steps:
       - name: Check out the codebase.

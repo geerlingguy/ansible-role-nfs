@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/geerlingguy/ansible-role-nfs/actions/workflows/ci.yml/badge.svg)](https://github.com/geerlingguy/ansible-role-nfs/actions/workflows/ci.yml)
 
-Installs NFS utilities on RedHat/CentOS or Debian/Ubuntu.
+Installs NFS utilities on RedHat/CentOS, Debian/Ubuntu, SLES/openSUSE.
 
 ## Requirements
 
@@ -19,7 +19,7 @@ A list of exports which will be placed in the `/etc/exports` file. See Ubuntu's 
     nfs_rpcbind_state: started
     nfs_rpcbind_enabled: true
 
-(RedHat/CentOS/Fedora only) The state of the `rpcbind` service, and whether it should be enabled at system boot.
+(RedHat/CentOS/Fedora/SLES only) The state of the `rpcbind` service, and whether it should be enabled at system boot.
 
 ## Dependencies
 
